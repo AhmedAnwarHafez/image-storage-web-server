@@ -3,14 +3,16 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getUser: getUser,
-  getUsers: getUsers,
+  addImage,
 }
 
-function getUsers(db = connection) {
-  return db('users').select()
-}
+function addImage(input, db = connection) {
+  const { filename, mimetype, imageBase64 } = file
+  const file = {
+    filename,
+    mimetype,
+    imageBase64,
+  }
 
-function getUser(id, db = connection) {
-  return db('users').where('id', id).first()
+  return db('images').insert(file)
 }
