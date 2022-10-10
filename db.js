@@ -15,7 +15,7 @@ function addImage(input, db = connection) {
     image_base64: imageBase64,
   }
 
-  return db('images').insert(file)
+  return db('images').insert([file], ['id'])
 }
 
 function getImageById(id, db = connection) {
