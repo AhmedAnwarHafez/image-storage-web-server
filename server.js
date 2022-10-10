@@ -1,6 +1,6 @@
 const express = require('express')
 
-const imageRoutes = require('./routes/users')
+const imageRoutes = require('./routes/images')
 
 const server = express()
 
