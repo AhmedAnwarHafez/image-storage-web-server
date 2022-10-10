@@ -14,8 +14,15 @@ router.post('/', upload.single('image'), (req, res) => {
     mimetype,
     imageBase64: buffer.toString('base64'),
   }
-  console.log(file)
-  res.json({ name: 'hello' })
+
+  db.addImage(file)
+    .then(([id]) => {
+      res.json({ id: id })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).json({ message: 'Cannot insert image in database' })
+    })
 })
 
 module.exports = router
