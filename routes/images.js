@@ -10,7 +10,7 @@ const router = express.Router()
 router.post('/', upload.single('image'), (req, res) => {
   const { originalname, mimetype, buffer } = req.file
   const file = {
-    originalname,
+    filename: originalname,
     mimetype,
     imageBase64: buffer.toString('base64'),
   }
