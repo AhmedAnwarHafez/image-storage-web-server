@@ -1,8 +1,9 @@
 exports.up = (knex) => {
   return knex.schema.createTable('images', (table) => {
     table.increments('id').primary()
-    table.string('mimetype')
-    table.string('image')
+    table.string('file_name')
+    table.string('mime_type')
+    table.string('image_base64')
   })
 }
 

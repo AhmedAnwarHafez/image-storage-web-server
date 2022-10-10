@@ -7,11 +7,11 @@ module.exports = {
 }
 
 function addImage(input, db = connection) {
-  const { filename, mimetype, imageBase64 } = file
+  const { filename, mimetype, imageBase64 } = input
   const file = {
-    filename,
-    mimetype,
-    imageBase64,
+    file_name: filename,
+    mime_type: mimetype,
+    image_base64: imageBase64,
   }
 
   return db('images').insert(file)
