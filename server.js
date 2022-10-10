@@ -8,6 +8,6 @@ const server = express()
 server.use(express.json())
 
 // Routes
-server.use('/api/v1/image', imageRoutes)
+server.use('/api/v1/images', imageRoutes)
 
 module.exports = server
