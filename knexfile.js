@@ -1,3 +1,7 @@
+const dotenv = require('dotenv')
+
+dotenv.config()
+console.log(process.env.DATABASE_URL)
 module.exports = {
   development: {
     client: 'sqlite3',
@@ -23,10 +27,7 @@ module.exports = {
 
   production: {
     client: 'postgresql',
-    connection: {
-      connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false },
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10,
