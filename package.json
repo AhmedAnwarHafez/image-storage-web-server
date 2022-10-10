@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-knex",
-  "version": "0.1.4",
-  "description": "Express boilerplate with Knex.js",
+  "name": "image-storage-server",
+  "version": "1.0.0",
+  "description": "A server for storing and retrieving images",
   "engines": {
     "node": "16.x"
   },
@@ -22,10 +22,6 @@
   },
   "author": "EDA",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/boilerplate-knex/issues"
-  },
-  "homepage": "https://github.com/dev-academy-challenges/boilerplate-knex#readme",
   "dependencies": {
     "sqlite3": "^5.0.8",
     "express": "^4.17.2",
