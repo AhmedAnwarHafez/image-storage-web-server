@@ -4,6 +4,7 @@ const connection = require('knex')(config)
 
 module.exports = {
   addImage,
+  getImageById,
 }
 
 function addImage(input, db = connection) {
@@ -15,4 +16,11 @@ function addImage(input, db = connection) {
   }
 
   return db('images').insert(file)
+}
+
+function getImageById(id, db = connection) {
+  return db('images')
+    .where('id', id)
+    .select('mime_type as mimetype', 'image_base64 as imageBase64')
+    .first()
 }
