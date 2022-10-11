@@ -25,15 +25,14 @@ router.post('/', upload.single('image'), (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
-  const id = req.params.id
-
-  if (isNaN(+id)) {
-    res.status(500).json({ message: 'URL parameter should be of type number' })
-  }
-
-  db.getImageById(id)
+router.get('/:fileName', (req, res) => {
+  const fileName = req.params.fileName
+  db.getImageById(fileName)
     .then((record) => {
+      if (!record) {
+        res.sendStatus(404)
+      }
+
       const img = Buffer.from(record.imageBase64, 'base64')
       res.writeHead(200, {
         'Content-Type': record.mimetype,
