@@ -17,7 +17,7 @@ router.post('/', upload.single('image'), (req, res) => {
 
   db.addImage(file)
     .then(([id]) => {
-      res.json({ id: id })
+      res.json(id)
     })
     .catch((err) => {
       console.error(err)
