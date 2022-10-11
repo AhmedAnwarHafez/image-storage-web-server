@@ -3,7 +3,7 @@ exports.up = (knex) => {
     table.increments('id').primary()
     table.string('file_name')
     table.string('mime_type')
-    table.string('image_base64')
+    table.text('image_base64')
   })
 }
 
