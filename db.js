@@ -10,7 +10,7 @@ module.exports = {
 function addImage(input, db = connection) {
   const { filename, mimetype, imageBase64 } = input
   const file = {
-    file_name: filename,
+    file_name: filename.toLowerCase(),
     mime_type: mimetype,
     image_base64: imageBase64,
   }
@@ -18,9 +18,10 @@ function addImage(input, db = connection) {
   return db('images').insert([file], ['id'])
 }
 
-function getImageById(id, db = connection) {
+function getImageById(fileName, db = connection) {
   return db('images')
-    .where('id', id)
-    .select('mime_type as mimetype', 'image_base64 as imageBase64')
+    .where('file_name', fileName.toLowerCase())
+    .select('id', 'mime_type as mimetype', 'image_base64 as imageBase64')
+    .orderBy('id', 'desc')
     .first()
 }
